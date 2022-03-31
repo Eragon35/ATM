@@ -68,8 +68,8 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:onClick="addSign"
-                android:text="/" />
+                android:onClick="exit"
+                android:text="Отмена" />
         </TableRow>
 
         <TableRow
@@ -107,8 +107,8 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:onClick="addSign"
-                android:text="*" />
+                android:onClick="clear"
+                android:text="Сброс" />
         </TableRow>
 
         <TableRow
@@ -146,8 +146,8 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:onClick="addSign"
-                android:text="-" />
+                android:onClick="result"
+                android:text="Ввод" />
         </TableRow>
 
         <TableRow
@@ -177,31 +177,30 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:onClick="clear"
-                android:text="C" />
+                android:onClick="addDigit"
+                android:text="000" />
 
             <Button
                 android:id="@+id/add"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:onClick="addSign"
-                android:text="+" />
+                android:text="" />
         </TableRow>
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1">
+<!--        <TableRow-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="0dp"-->
+<!--            android:layout_weight="1">-->
 
-            <Button
-                android:id="@+id/equal"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:onClick="result"
-                android:text="=" />
-        </TableRow>
+<!--            <Button-->
+<!--                android:id="@+id/equal"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_weight="1"-->
+<!--                android:onClick="result"-->
+<!--                android:text="Получить деньги" />-->
+<!--        </TableRow>-->
     </TableLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
