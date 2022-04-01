@@ -83,16 +83,21 @@ class MainActivity : AppCompatActivity() {
     {
         if(lastNumaric && !stateError)
         {
-//            val expression= ExpressionBuilder(text).build()
             try
             {
-                val number = outputTextView.text.toString().toInt()
-
-//        todo: read file & realize algorithm & output result
-
-//                val result= expression.evaluate()
-                val result = "I just wanna life that’s worth living"
-                outputTextView.text= result.toString()
+                var number = outputTextView.text.toString().toInt()
+                val banknotes = currencies.filter { (key, _) -> key == currentCurrency }[0].banknotes.toIntArray()
+                banknotes.sort()
+                banknotes.reverse()
+                var output = ""
+                for (value in banknotes) {
+                    val count = number / value
+                    number -= value * count
+                    output += "$value: $count шт, "
+                }
+//                val result = "I just wanna life that’s worth living"
+//                outputTextView.text= result.toString()
+                outputTextView.text= output
                 lastDot=true
             } catch (ex:Exception)
             {
