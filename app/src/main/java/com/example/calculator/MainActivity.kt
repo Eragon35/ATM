@@ -24,24 +24,34 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_welcome)
         readFile()
-        outputTextView = findViewById(R.id.textView2)
+        outputTextView = findViewById(R.id.textView1)
     }
 
     fun euro(view: View){
+        clear(view)
         currentCurrency = "EUR"
-        R.layout.activity_main
+        Log.i("currency current", "$currentCurrency")
+        setContentView(R.layout.activity_main)
+        outputTextView = findViewById(R.id.textView2)
     }
     fun dollar(view: View){
+        clear(view)
         currentCurrency = "USD"
-        R.layout.activity_main
+        Log.i("currency current", "$currentCurrency")
+        setContentView(R.layout.activity_main)
+        outputTextView = findViewById(R.id.textView2)
     }
     fun ruble(view: View){
+        clear(view)
         currentCurrency = "RUB"
-        R.layout.activity_main
+        Log.i("currency current", "$currentCurrency")
+        setContentView(R.layout.activity_main)
     }
     fun wtf(view: View){
+        clear(view)
         currentCurrency = "WTF"
-        R.layout.activity_main
+        Log.i("currency current", "$currentCurrency")
+        setContentView(R.layout.activity_main)
     }
 
     fun addDigit(view: View)
@@ -54,6 +64,7 @@ class MainActivity : AppCompatActivity() {
             outputTextView.append((view as Button).text)
         }
         lastNumaric=true
+        Log.i("currentDigit", outputTextView.text.toString())
     }
 
     fun addPoint(view: View)
@@ -74,7 +85,7 @@ class MainActivity : AppCompatActivity() {
         stateError=false
         lastDot=false
         currentCurrency = ""
-        R.layout.activity_welcome
+        setContentView(R.layout.activity_welcome)
     }
 
     fun exit() { this.finishAffinity(); }
@@ -86,10 +97,15 @@ class MainActivity : AppCompatActivity() {
             try
             {
                 var number = outputTextView.text.toString().toInt()
-                val banknotes = currencies.filter { (key, _) -> key == currentCurrency }[0].banknotes.toIntArray()
+                Log.i("size of list", "${currencies.size}")
+                Log.i("check", currencies[0].currency)
+                Log.i("check2", currentCurrency)
+                val banknotesList = currencies.filter {  it.currency.equals(currentCurrency) }
+                Log.i("size of banknotesList", "${banknotesList.size}")
+                val banknotes = banknotesList[0].banknotes.toIntArray()
                 banknotes.sort()
                 banknotes.reverse()
-                var output = ""
+                var output: String = ""
                 for (value in banknotes) {
                     val count = number / value
                     number -= value * count
@@ -97,11 +113,14 @@ class MainActivity : AppCompatActivity() {
                 }
 //                val result = "I just wanna life that’s worth living"
 //                outputTextView.text= result.toString()
+                Log.i("answer", output)
                 outputTextView.text= output
                 lastDot=true
             } catch (ex:Exception)
             {
                 outputTextView.text="Error"
+                ex.printStackTrace()
+//                Log.i("answer", "Error: ${ex.message}\n${ex.stackTrace}")
                 stateError=true
                 lastNumaric=false
             }
